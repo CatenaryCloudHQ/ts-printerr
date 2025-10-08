@@ -1,16 +1,18 @@
 # ts-printerr (Typescript Print-Errors)
 
-This is a script that runs compile/checks on a single file.
+This is a script that runs compile/checks on specific file(s).
 
 # Why
 
-`npx tsc --project tsconfig.json --noEmit --skipLibCheck` always runs checks on all files in the project, it's impossible to use it for specific files.
+`npx tsc --project tsconfig.json --noEmit --skipLibCheck` always runs checks on all project files. Is is impossible to use it to compile and check "selected" files. 
 
-The agents gets overwhelmed with output if there are issues. With a rule that says something like "after each change, run compile check on files you touched with this script:   
+The agents gets overwhelmed with the project compile output, especially if there are a lot of issues during refactoring.
+
+Now with a rule that says something like "after each change or update, run compile check on files you touched with this script:   
 
 `ts-node check-files.ts amplify/src/core/effectMarketDataPipeline/optionsMRocService.ts`
 
-Example:
+Example of the output:
 
 ```
 ➜  backend git:(switch-agent) ✗ ts-node check-files.ts amplify/src/core/DataPipeline/chainsService.ts
@@ -34,7 +36,7 @@ Example:
 ]
 ```
 
-Some return type and declared output differ in structure or optional fields. Agents can figure such errors out in seconds since they get proper context.
+I truncated output, the errors shows some incompatible return type with declared output in the structure or optional fields. Agents can figure such errors out in seconds since they get proper context, which makes this script a great feedback loop for agents.
 
 # Alternatives
 
