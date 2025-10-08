@@ -10,7 +10,31 @@ The agents gets overwhelmed with output if there are issues. With a rule that sa
 
 `ts-node check-files.ts amplify/src/core/effectMarketDataPipeline/optionsMRocService.ts`
 
-And the agent will be happy to collect fast feedback and fix issues.
+Example:
+
+```
+➜  backend git:(switch-agent) ✗ ts-node check-files.ts amplify/src/core/DataPipeline/chainsService.ts
+[
+  {
+    "code": 2322,
+    "category": "Error",
+    "message": "Type '(input: ChainsInputInterface) => Effect.Effect<{ readonly context: { readonly symbol: string; }; readonly chains: readonly { readonly expirations: readonly { readonly type: string; readonly date: string; str...' is not assignable to type '(input: ChainsInputInterface) => Effect<ChainsOutputInterface, ClientError | ParseError | AcquisitionError, never>'.\n  Type 'Effect<{ readonly context: { readonly symbol: string; readonly asOf: string; readonly priceRef: number; }; readonly chains: readonly { readonly expirations: readonly { readonly type: string; readonly date: string; ... }[]; .....' is not assignable to type 'Effect<ChainsOutputInterface, ClientError | ParseError | AcquisitionError, never>' with 'exactOptionalPropertyTypes: true'. Consider adding 'undefined' to the types of the target's properties.\n    Type 'unknown' is not assignable to type 'ClientError | ParseError | DataAcquisitionError'.",
+    "file": "amplify/src/core/DataPipeline/chainsService.ts",
+    "start": 3554,
+    "length": 11,
+    "related": [
+      {
+        "message": "The expected type comes from property 'fetchChains' which is declared here on type 'getChains'",
+        "file": "amplify/src/core/DataPipeline/chainsService.ts",
+        "start": 1657,
+        "length": 11
+      }
+    ]
+  }
+]
+```
+
+Some return type and declared output differ in structure or optional fields. Agents can figure such errors out in seconds since they get proper context.
 
 # Alternatives
 
