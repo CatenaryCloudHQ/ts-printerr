@@ -8,7 +8,7 @@ This is a script that runs compile/checks on a single file.
 
 The agents gets overwhelmed with output if there are issues. With a rule that says something like "after each change, run compile check on files you touched with this script:   
 
-`ts-node check-files.ts amplify/src/core/effectMarketDataPipeline/optionsMRocService.ts`" 
+`ts-node check-files.ts amplify/src/core/effectMarketDataPipeline/optionsMRocService.ts`
 
 And the agent will be happy to collect fast feedback and fix issues.
 
