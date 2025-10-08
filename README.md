@@ -1,6 +1,6 @@
 # ts-printerr (Typescript Print-Errors)
 
-This is a script that runs compile/checks on specific file(s).
+This is a script that runs a full compile/checks on a project but filters and formats errors output only for the specific file(s).
 
 # Why
 
@@ -36,7 +36,7 @@ Example of the output:
 ]
 ```
 
-I truncated output, the errors shows some incompatible return type with declared output in the structure or optional fields. Agents can figure such errors out in seconds since they get proper context, which makes this script a great feedback loop for agents.
+I truncated the output a bit. The errors shows some incompatible return type with declared output in the structure or optional fields. Agents can figure such errors out in seconds since they get proper context, which makes this script a great feedback loop for agents.
 
 # Alternatives
 
